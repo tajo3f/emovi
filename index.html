@@ -1,297 +1,570 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMOVI | High-Level Audiovisual</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- SEO & Meta Tags Primárias -->
+    <title>EMOVI | High-Level Audiovisual & Produção de Elite</title>
+    <meta name="description" content="Transformamos visões em produções de elite. Especialistas em Business & Aftermovies com qualidade cinematográfica. Eleve a percepção da sua marca.">
+    <meta name="keywords" content="audiovisual, produtora de video, aftermovie, videos corporativos, transmissão ao vivo, EMOVI">
+    <meta name="author" content="EMOVI">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / WhatsApp & Instagram / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sua-url-aqui.com.br/">
+    <meta property="og:title" content="EMOVI | High-Level Audiovisual">
+    <meta property="og:description" content="Mais de 6.000 produções entregues com excelência cinematográfica. O alto nível deve ser percebido.">
+    <!-- Substitua o link abaixo pela sua imagem de banner (ideal 1200x630px) -->
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/050505/ffffff?text=EMOVI+HIGH+LEVEL">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sua-url-aqui.com.br/">
+    <meta property="twitter:title" content="EMOVI | High-Level Audiovisual">
+    <meta property="twitter:description" content="Mais de 6.000 produções entregues com excelência cinematográfica. O alto nível deve ser percebido.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630/050505/ffffff?text=EMOVI+HIGH+LEVEL">
+
+    <!-- Tipografia e Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        /* ================= Variáveis Globais ================= */
         :root {
-            --primary: #ffffff;
-            --accent: #007AFF; /* Azul futurista */
-            --bg: #050505;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg-base: #030303;
+            --bg-surface: rgba(255, 255, 255, 0.03);
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --accent-1: #0057FF; /* Azul profundo */
+            --accent-2: #00C2FF; /* Ciano iluminado */
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(15, 15, 15, 0.6);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
+        /* ================= Reset & Base ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; font-size: 16px; }
+        
         body {
-            background-color: var(--bg);
-            color: var(--primary);
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Fundo Animado */
-        .bg-glow {
+        ::selection { background: var(--accent-1); color: #fff; }
+
+        h1, h2, h3, .logo { font-family: 'Syne', sans-serif; }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ================= Background Effects ================= */
+        .ambient-light {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
+            overflow: hidden;
+            background: radial-gradient(circle at top right, rgba(0, 87, 255, 0.05), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(0, 194, 255, 0.05), transparent 40%);
         }
 
         .blob {
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: var(--accent);
-            filter: blur(150px);
             border-radius: 50%;
-            opacity: 0.15;
-            animation: move 20s infinite alternate;
+            filter: blur(120px);
+            opacity: 0.4;
+            transition: top 2s ease-out, left 2s ease-out;
+            will-change: transform;
         }
 
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 20%); }
+        .blob.primary { width: 400px; height: 400px; background: var(--accent-1); top: -100px; right: -100px; animation: float 10s infinite alternate; }
+        .blob.secondary { width: 300px; height: 300px; background: var(--accent-2); bottom: -50px; left: -50px; animation: float 15s infinite alternate-reverse; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
         }
 
-        /* Navbar */
-        nav {
-            padding: 2rem;
+        /* ================= Navbar ================= */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 5%;
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: var(--glass-bg);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 15px 5%;
         }
 
         .logo {
-            font-weight: 900;
             font-size: 1.8rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Hero Section */
+        /* ================= Botões Premium ================= */
+        .btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .btn-glow {
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+            color: #fff;
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 87, 255, 0.3);
+        }
+
+        .btn-glow::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
+            z-index: -1; transition: opacity 0.4s ease; opacity: 0;
+        }
+
+        .btn-glow:hover::before { opacity: 1; }
+        .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 194, 255, 0.5);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .btn-small { padding: 10px 24px; font-size: 0.85rem; }
+
+        /* ================= Seções e Estrutura ================= */
+        section { padding: 120px 5%; position: relative; }
+
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-tag {
+            display: inline-block; padding: 6px 16px; border-radius: 50px;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--accent-2); margin-bottom: 20px;
+        }
+        .section-title { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 20px; }
+        .section-desc { color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* ================= Hero Section ================= */
         .hero {
-            height: 90vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding-top: 80px;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 900;
+            font-size: clamp(2.5rem, 8vw, 6.5rem);
+            font-weight: 800;
             line-height: 1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             text-transform: uppercase;
+            letter-spacing: -2px;
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #aaa;
-            max-width: 600px;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-secondary);
+            max-width: 700px;
             margin-bottom: 40px;
-            letter-spacing: 1px;
+            font-weight: 300;
         }
 
-        .tagline {
-            background: linear-gradient(90deg, #fff, #555);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-            margin-bottom: 10px;
-            display: block;
+        .cta-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+
+        /* ================= Serviços (Cards Glassmorphism) ================= */
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Botões */
-        .cta-container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn {
-            padding: 18px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid var(--border);
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
+            transform: translateX(-100%); transition: var(--transition);
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: #000;
-        }
+        .card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.2); }
+        .card:hover::before { transform: translateX(100%); transition: transform 0.8s ease; }
 
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        .card-icon {
+            font-size: 2.5rem; color: var(--accent-2); margin-bottom: 24px;
+            display: inline-block; padding: 15px; border-radius: 16px; background: rgba(0, 194, 255, 0.1);
         }
+        
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .card p { color: var(--text-secondary); font-size: 0.95rem; }
 
-        .btn-outline {
-            background: var(--glass);
-            color: var(--primary);
-            backdrop-filter: blur(5px);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: #000;
-        }
-
-        /* Seção "Sobre" inspirada no Instagram */
-        .stats {
+        /* ================= Estatísticas ================= */
+        .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 100px 10%;
-            background: rgba(255,255,255,0.02);
-        }
-
-        .stat-item {
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
             text-align: center;
-            padding: 40px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 60px 0;
         }
 
-        .stat-item h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
+        .stat-item h2 { font-size: 3.5rem; color: #fff; line-height: 1; margin-bottom: 10px; }
+        .stat-item h2 span { color: var(--accent-1); }
+        .stat-item p { color: var(--text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
 
-        /* Footer / Social */
+        /* ================= Social Proof / Marcas ================= */
+        .brands { padding: 60px 5%; text-align: center; background: rgba(255,255,255,0.01); }
+        .brands p { color: var(--text-secondary); margin-bottom: 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
+        .brand-logos { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; opacity: 0.5; }
+        .brand-logos i { font-size: 2rem; transition: var(--transition); cursor: pointer; }
+        .brand-logos i:hover { opacity: 1; color: var(--accent-2); }
+
+        /* ================= Footer ================= */
         footer {
-            padding: 50px;
-            text-align: center;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--glass-border);
+            padding: 80px 5% 40px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
         }
 
-        .social-links {
-            margin-top: 20px;
-            font-size: 1.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; max-width: 1200px; margin: 0 auto; margin-bottom: 60px; }
+        .footer-brand { max-width: 300px; }
+        .footer-brand p { color: var(--text-secondary); margin-top: 20px; font-size: 0.9rem; }
+        
+        .footer-links h4 { font-size: 1.2rem; margin-bottom: 20px; }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 10px; }
+        .footer-links ul li a { color: var(--text-secondary); transition: var(--transition); font-size: 0.95rem; }
+        .footer-links ul li a:hover { color: #fff; padding-left: 5px; }
+
+        .footer-bottom {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+            max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--glass-border); padding-top: 30px;
+            color: var(--text-secondary); font-size: 0.85rem;
         }
 
+        .social-links { display: flex; gap: 20px; }
         .social-links a {
-            color: var(--primary);
-            transition: color 0.3s;
+            display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+            border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--glass-border);
+            transition: var(--transition);
         }
+        .social-links a:hover { background: var(--accent-1); color: #fff; border-color: var(--accent-1); transform: translateY(-3px); }
 
-        .social-links a:hover {
-            color: var(--accent);
+        /* ================= Animações de Scroll ================= */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            .cta-group { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
+            header { padding: 15px 5%; }
+            .section-title { font-size: 2.2rem; }
+            .stats-container { grid-template-columns: 1fr; gap: 30px; border: none; padding: 0; }
+            .stat-item { padding: 20px 0; border-bottom: 1px solid var(--glass-border); }
+            .stat-item:last-child { border: none; }
+            .footer-content { flex-direction: column; }
         }
-
-        /* Animação de Entrada */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="bg-glow">
-        <div class="blob"></div>
+    <!-- Fundo Animado e Elementos de Vidro -->
+    <div class="ambient-light">
+        <div class="blob primary" id="blob1"></div>
+        <div class="blob secondary" id="blob2"></div>
     </div>
 
-    <nav>
+    <!-- Navegação -->
+    <header id="header">
         <div class="logo">EMOVI</div>
-        <a href="https://tally.so/r/lbA77B" target="_blank" class="btn btn-outline" style="padding: 10px 20px;">Faça parte do time</a>
-    </nav>
+        <a href="https://tally.so/r/lbA77B" target="_blank" class="btn btn-outline btn-small">
+            Faça parte do time
+        </a>
+    </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <span class="tagline reveal">BUSINESS & AFTERMOVIES</span>
-        <h1 class="reveal">ALTO NÍVEL<br>DEVE SER PERCEBIDO.</h1>
-        <p class="reveal">Transformamos visões em produções de elite. Mais de 6.000 produções entregues com excelência cinematográfica.</p>
+        <span class="section-tag reveal">Business & Aftermovies</span>
+        <h1 class="reveal delay-1">O Alto Nível<br>Deve Ser Percebido.</h1>
+        <p class="reveal delay-2">Não gravamos apenas vídeos. Nós construímos a percepção de valor da sua marca com excelência cinematográfica global.</p>
         
-        <div class="cta-container reveal">
-            <a href="https://wa.me/SEUNUMERO" class="btn btn-primary">
+        <div class="cta-group reveal delay-3">
+            <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn btn-glow">
                 <i class="fab fa-whatsapp"></i> Iniciar Projeto
             </a>
             <a href="https://www.instagram.com/emovi.business/" target="_blank" class="btn btn-outline">
-                <i class="fab fa-instagram"></i> Portfólio
+                <i class="fab fa-instagram"></i> Ver Portfólio
             </a>
         </div>
     </section>
 
-    <section class="stats">
-        <div class="stat-item reveal">
-            <h2>+6.000</h2>
-            <p>Produções Realizadas</p>
-        </div>
-        <div class="stat-item reveal">
-            <h2>3.8k</h2>
-            <p>Seguidores Fiéis</p>
-        </div>
-        <div class="stat-item reveal">
-            <h2>Elite</h2>
-            <p>Padrão de Transmissão</p>
+    <!-- Marcas / Prova Social Invisível -->
+    <section class="brands reveal">
+        <p>Marcas que confiam na excelência</p>
+        <div class="brand-logos">
+            <i class="fab fa-apple"></i>
+            <i class="fab fa-aws"></i>
+            <i class="fab fa-google"></i>
+            <i class="fab fa-spotify"></i>
         </div>
     </section>
 
+    <!-- Serviços -->
+    <section id="services">
+        <div class="section-header reveal">
+            <span class="section-tag">Expertise</span>
+            <h2 class="section-title">Nossas Soluções</h2>
+            <p class="section-desc">Entregamos o mais alto padrão visual para empresas que não aceitam ser apenas mais uma no mercado.</p>
+        </div>
+
+        <div class="grid-services">
+            <div class="card reveal delay-1">
+                <i class="fas fa-video card-icon"></i>
+                <h3>Business Films</h3>
+                <p>Vídeos corporativos que vendem sua cultura, autoridade e infraestrutura com um visual que gera impacto e confiança imediata.</p>
+            </div>
+            <div class="card reveal delay-2">
+                <i class="fas fa-film card-icon"></i>
+                <h3>Aftermovies</h3>
+                <p>A energia do seu evento eternizada. Captamos a essência e o calor do momento para que seu público reviva a experiência.</p>
+            </div>
+            <div class="card reveal delay-3">
+                <i class="fas fa-satellite-dish card-icon"></i>
+                <h3>Transmissões Elite</h3>
+                <p>Estrutura broadcast de televisão para seus eventos online. Zero delays, qualidade 4K e direção de corte impecável.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estatísticas (Contadores Animados) -->
+    <section class="reveal">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h2 class="counter" data-target="6000">0</h2>
+                <p>Produções Realizadas</p>
+            </div>
+            <div class="stat-item">
+                <h2><span class="counter" data-target="3800">0</span>+</h2>
+                <p>Seguidores Fiéis</p>
+            </div>
+            <div class="stat-item">
+                <h2><span>Elite</span></h2>
+                <p>Padrão de Qualidade</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section style="text-align: center; padding-bottom: 150px;">
+        <div class="card reveal" style="max-width: 800px; margin: 0 auto; padding: 60px 20px;">
+            <h2 class="section-title" style="font-size: 2.5rem;">Pronto para elevar o nível?</h2>
+            <p class="section-desc" style="margin-bottom: 40px;">Sua empresa merece ser vista como líder de mercado. Vamos construir isso juntos.</p>
+            <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn btn-glow">
+                Agendar Reunião Estratégica
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>© 2026 EMOVI. Produção de Mídia e Transmissão.</p>
-        <div class="social-links">
-            <a href="https://www.instagram.com/emovi.business/"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="https://wa.me/SEUNUMERO"><i class="fab fa-whatsapp"></i></a>
+        <div class="footer-content reveal">
+            <div class="footer-brand">
+                <div class="logo">EMOVI</div>
+                <p>Transformando visões complexas em produções audiovisuais de impacto global.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="https://www.instagram.com/emovi.business/">Portfólio</a></li>
+                    <li><a href="https://tally.so/r/lbA77B">Carreiras</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="https://wa.me/SEUNUMERO">WhatsApp</a></li>
+                    <li><a href="mailto:contato@emovi.com.br">contato@emovi.com.br</a></li>
+                    <li>São Paulo, SP - Brasil</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom reveal delay-1">
+            <p>&copy; 2026 EMOVI Business. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/emovi.business/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/SEUNUMERO" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
         </div>
     </footer>
 
+    <!-- Scripts de Interatividade -->
     <script>
-        // Efeito de Revelação ao Rolar
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
+        // 1. Navbar Glassmorphism no Scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
+        });
+
+        // 2. Animação de Scroll Reveal de Alta Performance (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Dispara contador se for a seção de stats
+                    if (entry.target.querySelector('.counter')) {
+                        startCounters(entry.target);
+                    }
+                    
+                    observer.unobserve(entry.target); // Anima apenas uma vez para não pesar
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 3. Lógica de Contadores Animados
+        let countersStarted = false;
+        function startCounters(section) {
+            if (countersStarted) return;
+            countersStarted = true;
+
+            const counters = section.querySelectorAll('.counter');
+            const speed = 200; // Quanto menor, mais rápido
+
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                if(!target) return; // Pula se não for número
+
+                const updateCount = () => {
+                    const count = +counter.innerText.replace(/\./g, '');
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc).toLocaleString('pt-BR');
+                        setTimeout(updateCount, 15);
+                    } else {
+                        // Formatação final (+k ou exata dependendo do valor)
+                        if(target === 3800) {
+                            counter.innerText = "3.8k";
+                        } else {
+                            counter.innerText = target.toLocaleString('pt-BR');
+                        }
+                    }
+                };
+                updateCount();
+            });
         }
 
-        window.addEventListener("scroll", reveal);
-
-        // Disparar uma vez no carregamento
-        window.onload = reveal;
-
-        // Efeito sutil de movimento no fundo baseado no mouse
+        // 4. Parallax Sutil e Efeito no Mouse para Blobs (Otimizado)
+        let mouseX = 0, mouseY = 0;
+        let blob1X = 0, blob1Y = 0;
+        
         document.addEventListener('mousemove', (e) => {
-            const blob = document.querySelector('.blob');
-            const x = e.clientX;
-            const y = e.clientY;
-            blob.style.left = x + 'px';
-            blob.style.top = y + 'px';
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         });
+
+        function animateBlobs() {
+            // Efeito suave de easing (segue o mouse com atraso luxuoso)
+            blob1X += (mouseX - blob1X) * 0.05;
+            blob1Y += (mouseY - blob1Y) * 0.05;
+            
+            const blob1 = document.getElementById('blob1');
+            const blob2 = document.getElementById('blob2');
+            
+            // Movimentação sutil limitando o raio
+            if (blob1) blob1.style.transform = `translate(${blob1X / 20}px, ${blob1Y / 20}px)`;
+            if (blob2) blob2.style.transform = `translate(-${blob1X / 30}px, -${blob1Y / 30}px)`;
+            
+            requestAnimationFrame(animateBlobs);
+        }
+        animateBlobs();
     </script>
 </body>
 </html>
