@@ -1,37 +1,41 @@
-# 🎬 EMOVI - High-Level Audiovisual
+# 🍪 Caseirinhos do Ju - Landing Page de Alta Conversão
 
-Este é o código-fonte da Landing Page institucional da **EMOVI**, uma produtora audiovisual focada em produções de alto nível, business e aftermovies. O design foi desenvolvido com uma estética futurista, minimalista e focada em conversão.
-
-## 🚀 Tecnologias Utilizadas
-
-* **HTML5**: Estruturação semântica.
-* **CSS3**: Estilização avançada com Glassmorphism, animações de keyframes e design responsivo.
-* **JavaScript (Vanilla)**: Efeitos de scroll reveal e interação dinâmica com o cursor.
-* **Font Awesome**: Ícones sociais e de interface.
-* **Google Fonts (Inter)**: Tipografia moderna e legível.
-
-## ✨ Funcionalidades
-
-* **Design Futurista (Dark Mode)**: Fundo com gradientes animados e sombras suaves para uma experiência premium.
-* **Responsividade Total**: Adaptado para desktops, tablets e smartphones.
-* **Botões de Ação (CTA)**:
-    * Integração direta com **WhatsApp**.
-    * Link para o **Instagram** profissional.
-    * Botão dedicado para recrutamento ("Faça parte do time").
-* **Efeitos de Animação**: Elementos que surgem ao rolar a página (Scroll Reveal) e fundo interativo que segue o movimento do mouse.
-
-## 🛠️ Como Utilizar
-
-1. Faça o download ou copie o código do arquivo `index.html`.
-2. Abra o arquivo em qualquer navegador moderno.
-3. Para colocar online, basta hospedar o arquivo em serviços como GitHub Pages, Netlify ou Vercel.
-
-## 📝 Personalização
-
-No arquivo HTML, você pode alterar os links de destino:
-
-* **WhatsApp**: Procure por `wa.me/SEUNUMERO` e substitua pelo número da empresa.
-* **Recrutamento**: O botão "Faça parte do time" já está configurado para o link do formulário Tally observado no perfil oficial.
+Este é o repositório do site oficial do **Caseirinhos do Ju**, um negócio artesanal de alimentos caseiros (pães, biscoitos amanteigados e casadinhos). O site foi desenvolvido com foco total em **conversão mobile**, projetado para transformar visitantes em pedidos reais diretamente no WhatsApp do Anderson Júnior (Junin).
 
 ---
-*Produzido com foco em autoridade visual e impacto de marca.*
+
+## 🎯 Objetivo do Projeto
+Maximizar as vendas do negócio local através de uma experiência de utilizador rápida, simples e altamente persuasiva. Cada botão de produto gera automaticamente uma mensagem personalizada para o WhatsApp do negócio, agilizando o processo de atendimento e fecho do pedido.
+
+---
+
+## 🎨 Identidade Visual e Comunicação
+* **Estilo Visual:** Artesanal, caseiro, aconchegante e familiar.
+* **Paleta de Cores:** Cores quentes e suaves baseadas em tons de creme, bege, caramelo e marrom-escuro para evocar a sensação de "feito com amor".
+* **Tom de Voz:** Humano, afetuoso, regional e muito próximo do cliente.
+
+---
+
+## 🧭 Estrutura do Site (SPA - Single Page Application)
+O site foi construído num formato de página única com navegação suave através do menu fixo:
+1. **Início (Hero Section):** Proposta de valor clara, imagem apelativa e o CTA (Call to Action) principal.
+2. **Diferenciais:** Três blocos em destaque detalhando os pontos fortes do negócio (Produção artesanal, Encomendas sob pedido e Atendimento rápido).
+3. **Quem Somos:** Seção institucional humanizada contando a história do Anderson Júnior e a missão da marca.
+4. **Catálogo de Produtos:** A secção mais importante, com cartões individuais para cada produto e botões de encomenda dedicados.
+5. **Botão Flutuante:** Acesso rápido ao WhatsApp visível a todo o momento em qualquer ponto da página.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+* **HTML5:** Estruturação semântica e acessível.
+* **Tailwind CSS (via CDN):** Framework utilitário para um design moderno, totalmente responsivo (Mobile-First) e desenvolvimento ultra-rápido.
+* **Google Fonts:** Combinação das famílias *Inter* (para máxima legibilidade nos textos) e *Playfair Display* (para um toque rústico e artesanal nos títulos).
+
+---
+
+## ⚙️ Como Alterar os Links do WhatsApp
+
+Caso precise de alterar o número de telefone ou as mensagens automáticas no futuro, localize os links no ficheiro `index.html` que seguem o padrão da API do WhatsApp:
+
+```text
+[https://wa.me/5527996511588?text=Sua%20Mensagem%20Aqui](https://wa.me/5527996511588?text=Sua%20Mensagem%20Aqui)
